@@ -1,36 +1,34 @@
+
 import Image from "next/image";
 import Information from '../components/Information'
 import {Welcome} from '../lib/types'
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { AxiosResponse } from "axios";
+
+
 
 export default function Home() {
-  const axios = require('axios');
-  
+  {/*const axios = require('axios');
 
-const fetchDataFromApi = async () => {
-  try {
-    const response = await axios.get('https://www.dev.readychatai.com/messages_json?format=api');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error; 
-  }
-};
+const [apiData, setApiData] = useState<Welcome[]>([]);
 
+  useEffect(() => {
+    const fetchDataFromApi = async () => {
+      try {
+        const response: AxiosResponse<Welcome[]> = await axios.get('http://www.app.readychatai.com/data');
+        setApiData(response.data);
+        console.log('Data from API:', response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-fetchDataFromApi()
-  .then(data => {
-    console.log('Data from API:', data);
-    
-  })
-  .catch(error => {
-    
-    console.error('Failed to fetch data:', error);
-  });
+    fetchDataFromApi();
+  }, []);*/}
 
   return (
     <div>
-      <Information/>
+      <Information  />
     </div>
   );
 }
