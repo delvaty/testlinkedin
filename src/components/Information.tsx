@@ -100,6 +100,7 @@ const Information: React.FC = () => {
       ))}
     </div>
     
+    
   );
 };
 
