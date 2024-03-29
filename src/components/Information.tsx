@@ -35,7 +35,7 @@ const Information: React.FC = () => {
   }, []);
 
   return (
-    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 py-3 mx-3">
+    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 py-3 mx-3 ">
       {apiData.map((item) => (
         <Card className="max-w-[340px]" key={item.id}>
           <CardHeader className="justify-between">
