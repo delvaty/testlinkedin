@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import { Welcome } from "../lib/types";
-import { useEffect, useState } from "react";
-import { AxiosResponse } from "axios";
+import { InformationType } from "../lib/types";
+
 import {
   Card,
   CardHeader,
@@ -12,37 +11,22 @@ import {
   Button,
 } from "@nextui-org/react";
 
-const Information: React.FC = () => {
-  const axios = require("axios");
+interface Props {
+  informationData: InformationType[];
+}
+
+const Information = ({ informationData }: Props) => {
   const [isFollowed, setIsFollowed] = React.useState(false);
-
-  const [apiData, setApiData] = useState<Welcome[]>([]);
-
-
-  useEffect(() => {
-    const fetchDataFromApi = async () => {
-      try {
-        const response: AxiosResponse<Welcome[]> = await axios.get(
-          "http://www.app.readychatai.com/data"
-        );
-        setApiData(response.data);
-        console.log("Data from API:", response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchDataFromApi();
-  }, []);
 
   const formatDate = (date: Date) => {
     return date.toLocaleString(); // Formateo de fecha y hora
   };
 
+
   return (
     <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 py-3 mx-3 ">
-      {apiData.map((item) => (
-        <Card className="max-w-[340px]" key={item.id}>
+      {informationData.map((item) => (
+        <Card className="max-w-[460px]" key={item.id}>
           <CardHeader className="justify-between">
             <div className="flex gap-5">
               <Avatar
@@ -76,9 +60,7 @@ const Information: React.FC = () => {
             </Button>
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
-            <p>
-              {item.message_text}
-            </p>
+            <p>{item.message_text}</p>
             <span className="pt-2">
               #FrontendWithDelvaty
               <span className="py-2" aria-label="computer" role="img">
@@ -87,20 +69,24 @@ const Information: React.FC = () => {
             </span>
           </CardBody>
           <CardFooter className="gap-3">
-        <div className="flex gap-1 flex-col">
-          <p className="font-semibold text-default-400 text-small">Number received</p>
-          <p className="  text-small text-green-500">{item.received_number}</p>
-        </div>
-        <div className="flex gap-1 flex-col">
-          <p className="font-semibold text-default-400 text-small">Number Send</p>
-          <p className="text-red-500 text-small">{item.sender_number}</p>
-        </div>
-      </CardFooter>
+            <div className="flex gap-1 flex-col">
+              <p className="font-semibold text-default-400 text-small">
+                Number received
+              </p>
+              <p className="  text-small text-green-500">
+                {item.received_number}
+              </p>
+            </div>
+            <div className="flex gap-1 flex-col">
+              <p className="font-semibold text-default-400 text-small">
+                Number Send
+              </p>
+              <p className="text-red-500 text-small">{item.sender_number}</p>
+            </div>
+          </CardFooter>
         </Card>
       ))}
     </div>
-    
-    
   );
 };
 
