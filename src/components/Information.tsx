@@ -18,6 +18,7 @@ const Information: React.FC = () => {
 
   const [apiData, setApiData] = useState<Welcome[]>([]);
 
+
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
@@ -33,6 +34,10 @@ const Information: React.FC = () => {
 
     fetchDataFromApi();
   }, []);
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleString(); // Formateo de fecha y hora
+  };
 
   return (
     <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 py-3 mx-3 ">
@@ -51,7 +56,7 @@ const Information: React.FC = () => {
                   {item.sender_name}
                 </h4>
                 <h5 className="text-small tracking-tight text-default-400">
-                  {item.message_date}
+                  {formatDate(new Date(item.message_date))}
                 </h5>
               </div>
             </div>

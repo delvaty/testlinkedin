@@ -3,7 +3,7 @@ export interface Welcome {
     business_id:     number;
     sender_name:     string;
     message_text:    string;
-    message_date:    string;
+    message_date:    Date;
     platform:        Platform;
     sender_number:   number;
     received_number: number;
