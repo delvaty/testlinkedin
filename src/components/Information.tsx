@@ -8,8 +8,8 @@ import {
   CardBody,
   CardFooter,
   Avatar,
-  Button,
 } from "@nextui-org/react";
+import ButtonFollow from "./ButtonFollow";
 
 interface Props {
   informationData: InformationType[];
@@ -26,7 +26,7 @@ const Information = ({ informationData }: Props) => {
   return (
     <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 py-3 mx-3 ">
       {informationData.map((item) => (
-        <Card className="max-w-[460px]" key={item.id}>
+        <Card className="max-w-[350px]" key={item.id}>
           <CardHeader className="justify-between">
             <div className="flex gap-5">
               <Avatar
@@ -44,7 +44,7 @@ const Information = ({ informationData }: Props) => {
                 </h5>
               </div>
             </div>
-            
+            <ButtonFollow/>
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
             <p>{item.message_text}</p>
@@ -55,12 +55,12 @@ const Information = ({ informationData }: Props) => {
               </span>
             </span>
           </CardBody>
-          <CardFooter className="gap-3">
-            <div className="flex gap-1 flex-col">
+          <CardFooter className="gap-3 ">
+            <div className="flex gap-1 flex-col ">
               <p className="font-semibold text-default-400 text-small">
                 Number received
               </p>
-              <p className="  text-small text-green-500">
+              <p className="text-small text-green-500 ">
                 {item.received_number}
               </p>
             </div>
@@ -68,7 +68,7 @@ const Information = ({ informationData }: Props) => {
               <p className="font-semibold text-default-400 text-small">
                 Number Send
               </p>
-              <p className="text-red-500 text-small">{item.sender_number}</p>
+              <p className="text-red-500 text-small ">{item.sender_number}</p>
             </div>
           </CardFooter>
         </Card>
