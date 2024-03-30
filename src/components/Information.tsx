@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import { InformationType } from "../lib/types";
 
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Information = ({ informationData }: Props) => {
-  const [isFollowed, setIsFollowed] = React.useState(false);
+  
 
   const formatDate = (date: Date) => {
     return date.toLocaleString(); // Formateo de fecha y hora
@@ -44,20 +44,7 @@ const Information = ({ informationData }: Props) => {
                 </h5>
               </div>
             </div>
-            <Button
-              className={
-                isFollowed
-                  ? "bg-transparent text-foreground border-default-200"
-                  : ""
-              }
-              color="primary"
-              radius="full"
-              size="sm"
-              variant={isFollowed ? "bordered" : "solid"}
-              onPress={() => setIsFollowed(!isFollowed)}
-            >
-              {isFollowed ? "Unfollow" : "Follow"}
-            </Button>
+            
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
             <p>{item.message_text}</p>
